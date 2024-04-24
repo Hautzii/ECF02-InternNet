@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property mixed $isCompany
+ */
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -43,5 +47,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function internshipOpportunities()
+    {
+        return $this->hasMany(InternshipOpportunity::class);
+    }
+
+    public function isCompany()
+    {
+        return $this->isCompany;
     }
 }

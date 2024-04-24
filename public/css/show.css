@@ -1,0 +1,10 @@
+.containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+.description-full {
+    line-height: 1.5;
+}
