@@ -13,9 +13,8 @@
                         <h2 class="mt-4">{{$jobOffer->title}}</h2>
                         <p class="mt-4">Start date : {{$jobOffer->start}} {{$jobOffer->end}}</p>
                         <p class="mt-4 description-full">{{$jobOffer->description}}</p>
-                        <a href="mailto:{{$jobOffer->email}}" class="mt-4">Contact Us</a>
                     </div>
-                    @if(auth()->user())
+                    @if (Auth::check())
                     <div class="mt-2">
                         <form method="get" action="{{route('jobOffers.edit', $jobOffer->id)}}">
                             @csrf
@@ -28,7 +27,10 @@
                         </form>
                     </div>
                     @endif
-                    <div class="mt-2">
+                    <div class="mt-4">
+                        <a href="mailto:{{$jobOffer->email}}">Contact Us</a>
+                    </div>
+                    <div class="mt-4">
                         <a href="{{route('jobOffers.index')}}">Go back</a>
                     </div>
                 </div>

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InternshipOpportunity;
+use App\Models\JobOffer;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class InternshipOpportunityController extends Controller
+class JobOfferController extends Controller
 {
     public function index(): View {
-        $jobOffers = InternshipOpportunity::all();
+        $jobOffers = JobOffer::all();
         return view('jobOffers.index', compact('jobOffers'));
     }
 
     public function show(string $id): View {
-        $jobOffer = InternshipOpportunity::find($id);
+        $jobOffer = JobOffer::find($id);
         return view('jobOffers.show', compact('jobOffer'));
     }
 
@@ -29,7 +29,7 @@ class InternshipOpportunityController extends Controller
             'email' => 'required|email',
         ]);
 
-        InternshipOpportunity::create([
+        $jobOffer = new JobOffer([
             'title' => $request->input('title'),
             'location' => $request->input('location'),
             'contract' => $request->input('contract'),
@@ -37,9 +37,10 @@ class InternshipOpportunityController extends Controller
             'start' => $request->start,
             'end' => $request->end,
             'email' => $request->input('email'),
-            // 'company_id' => auth()->user()->company->id,
-            // 'user_id' => auth()->id(),
         ]);
+
+        $jobOffer->user_id = auth()->id();
+        $jobOffer->save();
 
         return redirect()->route('jobOffers.index');
     }
@@ -49,7 +50,7 @@ class InternshipOpportunityController extends Controller
     }
 
     public function edit(string $id): View {
-        $jobOffer = InternshipOpportunity::find($id);
+        $jobOffer = JobOffer::find($id);
         return view('jobOffers.edit', compact('jobOffer'));
     }
 
@@ -62,7 +63,7 @@ class InternshipOpportunityController extends Controller
             'start' => 'required|date',
         ]);
 
-        $jobOffer = InternshipOpportunity::find($id);
+        $jobOffer = JobOffer::find($id);
 
         $jobOffer->update([
             'title' => $request->input('title'),
@@ -78,7 +79,7 @@ class InternshipOpportunityController extends Controller
     }
 
     public function destroy(string $id): RedirectResponse {
-        $jobOffer = InternshipOpportunity::find($id);
+        $jobOffer = JobOffer::find($id);
         $jobOffer->delete();
         return redirect()->route('jobOffers.index');
     }

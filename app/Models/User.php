@@ -49,18 +49,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function company()
+    public function jobOffers()
     {
-        return $this->hasOne(Company::class);
-    }
-
-    public function internshipOpportunities()
-    {
-        return $this->hasMany(InternshipOpportunity::class);
-    }
-
-    public function isCompany()
-    {
-        return $this->isCompany;
+        return $this->hasMany(JobOffer::class);
     }
 }

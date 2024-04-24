@@ -5,7 +5,7 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Job Offers') }}
                 </h2>
-                @if (auth()->user() && auth()->user()->isCompany())
+                @if (Auth::check())
                 <x-nav-link :href="route('jobOffers.create')" class="ml-custom add_intern">
                     {{ __('Add an offer') }}
                 </x-nav-link>
@@ -26,7 +26,7 @@
                         <div class="mt-4">
                             <a href="{{route('jobOffers.show', $jobOffer->id)}}" class="text-blue-500 hover:text-blue-700">Read more</a>
                         </div>
-                        @if(auth()->user() && auth()->user()->isCompany())
+                        @if (Auth::check())
                         <div class="mt-4 justify-end">
                             <form method="get" action="{{route('jobOffers.edit', $jobOffer->id)}}">
                                 @csrf

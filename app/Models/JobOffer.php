@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static find(string $id)
  * @method static create(array $array)
  */
-class InternshipOpportunity extends Model
+class JobOffer extends Model
 {
     use HasFactory;
 
@@ -20,13 +20,9 @@ class InternshipOpportunity extends Model
         'description',
         'start',
         'end',
-        'email'
+        'email',
+        'user_id'
     ];
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
 
     public function user()
     {

@@ -5,30 +5,50 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('jobOffers.store') }}" method="post" class="flex flex-col">
+                    <form action="{{ route('jobOffers.store') }}" method="POST" class="flex flex-col space-y-4">
                         @csrf
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title">
-                        <label for="location">Location</label>
-                        <input type="text" name="location" id="location">
-                        <label for="contract">Contract</label>
-                        <input type="text" name="contract" id="contract">
-                        <label for="start">Start</label>
-                        <input type="date" name="start" id="start">
-                        <label for="end">End</label>
-                        <input type="date" name="end" id="end">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description"></textarea>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-                        <button type="submit">Submit</button>
+                        <div>
+                            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                            <input type="text" name="title" id="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                            <input type="text" name="location" id="location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="contract" class="block text-sm font-medium text-gray-700">Contract</label>
+                            <input type="text" name="contract" id="contract" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="start" class="block text-sm font-medium text-gray-700">Start</label>
+                            <input type="date" name="start" id="start" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="end" class="block text-sm font-medium text-gray-700">End</label>
+                            <input type="date" name="end" id="end" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea name="description" id="description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" name="email" id="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <button type="submit" class="submit-button">
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+<link rel="stylesheet" href="{{asset('/css/form.css')}}">
